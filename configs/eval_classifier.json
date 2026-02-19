@@ -1,0 +1,74 @@
+{
+  "GENERAL": {
+    "root_dir": "/path/to/project",
+    "mode": "eval",
+    "name": "classifier/FanCNN_IVUS",
+    "seed": 1
+  },
+  "DATA": {
+    "batch_size": 10,
+    "geometric": false,
+    "modality": "IVUS",
+    "mode": "val",
+    "mpr_transform": {
+      "p_theta": 0,
+      "ps": [480, 480],
+      "ps_polar": [64, 48],
+      "resample": true,
+      "spacing": [0.0175, 0.0175, 0.3],
+      "spacing_polar": [0.065625, 0.13, 0.3]
+    },
+    "n_workers": 10,
+    "polar_transform": {
+      "l_rad": 240,
+      "n_theta": 48,
+      "n_rad": 64,
+      "shape": [480, 480]
+    },
+    "root_dir": "/path/to/data",
+    "size": 100
+  },
+  "MODEL": {
+    "ckpt": ["/path/to/checkpoint/fold_0/model/last.ckpt",
+             "/path/to/checkpoint/fold_1/model/last.ckpt",
+             "/path/to/checkpoint/fold_2/model/last.ckpt",
+             "/path/to/checkpoint/fold_3/model/last.ckpt",
+             "/path/to/checkpoint/fold_4/model/last.ckpt"],
+    "dim": [16, 16, 32, 32, 64, 64],
+    "loss": "BCEDiceLoss",
+    "loss_kwargs": {
+    },
+    "metric": "BinaryAUROC",
+    "name": "FanCNN",
+    "n_channels": 1,
+    "n_classes": 4
+  },
+  "OPTIMIZATION": {
+    "alpha_l": 1,
+    "clip_grad": 1,
+    "encoder": {
+      "freeze": false,
+      "resume": null
+    },
+    "eval_every": 5,
+    "gpu": 0,
+    "lr_policy": "CosineAnnealingWarmRestarts",
+    "name": "AdamW",
+    "n_cycles": 3,
+    "n_warmup": 20,
+    "pin_memory": false,
+    "resume": null,
+    "optimizer": {
+      "betas": [
+        0.9,
+        0.95
+      ],
+      "lr": 1e-2,
+      "weight_decay": 0.05
+    },
+    "scheduler": {
+      "T_0": 80,
+      "T_mult": 2
+    }
+  }
+}

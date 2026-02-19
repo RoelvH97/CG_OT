@@ -1,0 +1,120 @@
+{
+  "GENERAL": {
+    "root_dir": "/path/to/project",
+    "mode": "register",
+    "name": "sample",
+    "seed": 1
+  },
+  "DATA": {
+    "batch_size": 1,
+    "mpr_transform": {
+      "ps": [480, 480],
+      "ps_polar": [64, 48],
+      "resample": true,
+      "spacing": [0.0175, 0.0175, 0.3],
+      "spacing_polar": [0.065625, 0.13, 0.3]
+    },
+    "n_workers": 0,
+    "polar_transform": {
+      "l_rad": 240,
+      "n_theta": 48,
+      "n_rad": 64,
+      "shape": [480, 480]
+    },
+    "root_dir": "/path/to/data",
+    "sample_id": "sample_001"
+  },
+  "MODEL": {
+    "ckpts_IVUS": [
+      "/path/to/checkpoint/classifier_IVUS"
+    ],
+    "ckpts_MPR": [
+      "/path/to/checkpoint/classifier_MPR"
+    ],
+    "cls_bif_only": false,
+    "dim": [16, 16, 32, 32, 64, 64],
+    "loss": {
+      "cls_dz_a": "DiceLoss",
+      "cls_dz_b": null,
+      "lumen_a": "L1Loss",
+      "lumen_b": "NCCLoss",
+      "cls_theta_a": "DiceLoss",
+      "cls_theta_b": "SinkhornOTLoss",
+      "cls_refine_a": "DiceLoss",
+      "cls_refine_b": "SinkhornOTLoss",
+      "lum_refine": "NCCLoss",
+      "similarity": null
+    },
+    "loss_kwargs": {
+      "cls_dz_a": {
+        "sigmoid": true
+      },
+      "cls_dz_b": {
+        "sigmoid": true
+      },
+      "cls_theta_a": {
+        "sigmoid": true
+      },
+      "cls_theta_b": {
+        "sigmoid": true
+      },
+      "cls_refine_a": {
+        "sigmoid": true
+      },
+      "cls_refine_b": {
+        "sigmoid": true
+      }
+    },
+    "metric": "BinaryAUROC",
+    "multiplier": 2,
+    "name": {
+      "classifier": "FanCNN",
+      "registration_module": "RegNet"
+    },
+    "n_channels": 1,
+    "n_classes": 4,
+    "opt": {
+      "r": false,
+      "theta": true,
+      "uv": true,
+      "z": true
+    }
+  },
+  "OPTIMIZATION": {
+    "clip_grad": 1,
+    "encoder": {
+      "freeze": false,
+      "resume": null
+    },
+    "eval_every": 5,
+    "gpu": 0,
+    "lr_policy": "CosineAnnealingWarmRestarts",
+    "name": "AdamW",
+    "n_cycles": 1,
+    "n_warmup": 50,
+    "pin_memory": false,
+    "resume": null,
+    "optimizer": {
+      "betas": [
+        0.9,
+        0.95
+      ],
+      "lr": 1e-2,
+      "weight_decay": 0
+    },
+    "reg": {
+      "alpha_cls_a": 1,
+      "alpha_cls_b": 0.01,
+      "alpha_lum": 1,
+      "alpha_sim": 100,
+      "grad_r": 1000,
+      "grad_s": 1000,
+      "grad_theta": 10000,
+      "norm_r": 0
+    },
+    "scheduler": {
+      "T_0": 200,
+      "T_mult": 2
+    }
+  }
+}

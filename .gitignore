@@ -1,0 +1,38 @@
+# IDE
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Training outputs
+lightning_logs/
+*.ckpt
+*.pt
+*.pth
+
+# Data
+*.nii
+*.nii.gz
+*.mhd
+*.raw
+*.dcm
+
+# Paper (keep out of repo)
+assets/*.pdf
+
+# OS
+.DS_Store
+Thumbs.db
