@@ -1,8 +1,8 @@
-# CG-OT: Classifier-guided CCTA-IVUS Registration via Optimal Transport Matching
+# TG-OT: Topology-guided CCTA-IVUS Registration via Optimal Transport Matching
 
 This repository contains the implementation for the MICCAI 2026 submission:
 
-**"CG-OT: Classifier-guided CCTA-IVUS registration via optimal transport matching"**
+**"TG-OT: Topology-guided CCTA-IVUS registration via optimal transport matching"**
 
 ## Overview
 
@@ -28,7 +28,7 @@ Qualitative registration result showing cross-sectional normal vectors color-cod
 ## Repository Structure
 
 ```
-CG_OT/
+TG_OT/
 ├── main_classify.py        # Train and evaluate the feature detection CNN
 ├── main_register.py        # Run CCTA-IVUS registration
 ├── configs/
