@@ -6,7 +6,7 @@ This repository contains the implementation for the MICCAI 2026 submission:
 
 ## Overview
 
-CG-OT provides a fully automatic framework for registering coronary CT angiography (CCTA) with intravascular ultrasound (IVUS), enabling comprehensive coronary analysis that neither modality can provide alone, **without requiring prior vessel segmentation**.
+TG-OT provides a fully automatic framework for registering coronary CT angiography (CCTA) with intravascular ultrasound (IVUS), enabling comprehensive coronary analysis that neither modality can provide alone, **without requiring prior vessel segmentation**.
 
 ### Key Features
 
